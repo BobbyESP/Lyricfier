@@ -68,8 +68,10 @@ kotlin {
             implementation(libs.kotlinx.coroutines.core)
             implementation(libs.kotlinx.serialization.json)
             implementation(libs.kotlinx.datetime)
-            implementation(libs.ktor.core)
+            implementation(libs.bundles.ktor)
             implementation(libs.koin.core)
+            implementation(libs.koin.ktor)
+            implementation(libs.kermit)
         }
 
         commonTest.dependencies {
