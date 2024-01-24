@@ -5,7 +5,7 @@ enum class Provider {
     LRCLIB,
     NETEASE;
 
-    override fun toString(): String {
+    open override fun toString(): String {
         return when (this) {
             SPOTIFY -> "Spotify"
             LRCLIB -> "LrcLib"
@@ -13,7 +13,7 @@ enum class Provider {
         }
     }
 
-    fun String.toProvider(): Provider {
+    open fun String.toProvider(): Provider {
         return when (this) {
             "Spotify" -> SPOTIFY
             "LrcLib" -> LRCLIB
@@ -22,7 +22,7 @@ enum class Provider {
         }
     }
 
-//    fun getProvider(): LyricsProvider {
+//    open fun getProvider(): LyricsProvider {
 //        return when (this) {
 //            SPOTIFY -> SpotifyLyricsProvider()
 //            LRCLIB -> LrcLibLyricsProvider()

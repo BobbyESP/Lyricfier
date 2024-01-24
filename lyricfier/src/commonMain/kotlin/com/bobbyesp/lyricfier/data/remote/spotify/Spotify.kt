@@ -7,10 +7,11 @@ import com.bobbyesp.lyricfier.domain.repository.LyricsProvider
 import com.bobbyesp.lyricfier.utils.KtorUtils.client
 import com.bobbyesp.lyricfier.utils.KtorUtils.json
 import com.bobbyesp.lyricfier.utils.KtorUtils.manageError
+import com.bobbyesp.lyricfier.utils.exceptions.NotAvailableProvider
 import io.ktor.client.call.body
 import io.ktor.client.request.get
 
-open class Spotify: LyricsProvider() {
+open class Spotify: LyricsProvider {
     override val provider: Provider
         get() = Provider.SPOTIFY
     override val syncedSupport: Boolean
@@ -21,7 +22,7 @@ open class Spotify: LyricsProvider() {
         get() = SpotifyHttpRoutes.LYRICS_API_BASE
 
     override suspend fun getPlainLyrics(songInfo: SongInfo): String {
-        throw NotImplementedError("Spotify does not support plain lyrics")
+        throw NotAvailableProvider("Spotify does not support plain lyrics")
     }
 
     /**
@@ -34,7 +35,7 @@ open class Spotify: LyricsProvider() {
         return try {
             val apiResponse: String = client.get(baseUrl) {
                 url {
-                    parameters.append("url", songInfo.link ?: throw IllegalArgumentException("SongInfo.link is null"))
+                    parameters.append("url", songInfo.link ?: throw IllegalArgumentException("SongInfo link is null"))
                     parameters.append("format", "lrc")
                 }
             }.body()
