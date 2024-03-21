@@ -21,12 +21,4 @@ enum class Provider {
             else -> throw IllegalArgumentException("Unknown provider: $this")
         }
     }
-
-//    open fun getProvider(): LyricsProvider {
-//        return when (this) {
-//            SPOTIFY -> SpotifyLyricsProvider()
-//            LRCLIB -> LrcLibLyricsProvider()
-//            NETEASE -> NetEaseLyricsProvider()
-//        }
-//    }
 }

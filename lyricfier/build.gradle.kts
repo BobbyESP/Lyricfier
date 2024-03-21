@@ -75,6 +75,7 @@ kotlin {
         }
 
         commonTest.dependencies {
+            implementation(libs.kotlinx.coroutines.test)
             implementation(kotlin("test"))
         }
 

@@ -7,6 +7,7 @@ import com.bobbyesp.lyricfier.domain.repository.LyricsProvider
 import com.bobbyesp.lyricfier.utils.KtorUtils.client
 import com.bobbyesp.lyricfier.utils.KtorUtils.json
 import com.bobbyesp.lyricfier.utils.KtorUtils.manageError
+import com.bobbyesp.lyricfier.utils.LyricsUtil.deleteEmptyLines
 import com.bobbyesp.lyricfier.utils.exceptions.NotAvailableProvider
 import io.ktor.client.call.body
 import io.ktor.client.request.get
@@ -22,7 +23,7 @@ open class Spotify: LyricsProvider {
         get() = SpotifyHttpRoutes.LYRICS_API_BASE
 
     override suspend fun getPlainLyrics(songInfo: SongInfo): String {
-        throw NotAvailableProvider("Spotify does not support plain lyrics")
+        throw NotAvailableProvider("Spotify does not support plain lyrics (or at least by now)")
     }
 
     /**
@@ -35,11 +36,11 @@ open class Spotify: LyricsProvider {
         return try {
             val apiResponse: String = client.get(baseUrl) {
                 url {
-                    parameters.append("url", songInfo.link ?: throw IllegalArgumentException("SongInfo link is null"))
+                    parameters.append("url", songInfo.link ?: throw IllegalArgumentException("SongInfo link must not be null; it will be used for downloading the lyrics."))
                     parameters.append("format", "lrc")
                 }
             }.body()
-            json.decodeFromString<SyncedLines>(apiResponse)
+            json.decodeFromString<SyncedLines>(apiResponse).deleteEmptyLines()
         } catch (e: Exception) {
             manageError(e)
             SyncedLines(
