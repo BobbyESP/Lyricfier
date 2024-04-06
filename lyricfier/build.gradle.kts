@@ -69,8 +69,6 @@ kotlin {
             implementation(libs.kotlinx.serialization.json)
             implementation(libs.kotlinx.datetime)
             implementation(libs.bundles.ktor)
-            implementation(libs.koin.core)
-            implementation(libs.koin.ktor)
             implementation(libs.kermit)
         }
 

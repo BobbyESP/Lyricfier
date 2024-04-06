@@ -63,7 +63,7 @@ publishing {
         pom {
             name.set("Lyricfier")
             description.set("A Kotlin Multiplatform library for downloading synced and non-synced lyrics from various sources.")
-            //url.set("") todo
+            url.set("https://github.com/BobbyESP/Lyricfier")
 
             licenses {
                 license {
@@ -73,9 +73,9 @@ publishing {
             }
             developers {
                 developer {
-                    //id.set("") todo
-                    //name.set("") todo
-                    //email.set("") todo
+                    id.set("BobbyESP")
+                    name.set("Gabriel Fontán")
+                    email.set("gabilessto@gmail.com")
                 }
             }
             scm {
