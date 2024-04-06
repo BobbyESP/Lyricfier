@@ -1,6 +1,6 @@
 # Lyricfier
 
-Kotlin Multiplatform Library
+A Kotlin Multiplatform Library for downloading synced and non-synced lyrics from various sources
 
 ### Publish to MavenCentral
 
