@@ -19,7 +19,7 @@ nmcp {
 }
 
 group = "io.github.bobbyesp.lyricfier"
-version = "1.0"
+version = "1.0.1"
 
 kotlin {
     androidTarget {
