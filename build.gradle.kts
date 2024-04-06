@@ -36,8 +36,8 @@ nmcp {
     publishAggregation {
         project(":lyricfier")
 
-        username = "5ArPDMuR" //getExtraString("ossrhUsername")
-        password = "xLChZzzN/XpFKYd9JSCvsHG8Z7Bhx0v/4goscrNHdOVe" //getExtraString("ossrhPassword")
+        username = getExtraString("ossrhUsername")
+        password = getExtraString("ossrhPassword")
 
         // publish manually from the portal
         publicationType = "USER_MANAGED"
