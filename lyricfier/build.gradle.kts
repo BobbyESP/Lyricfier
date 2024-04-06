@@ -14,7 +14,7 @@ nmcp {
         password = getExtraString("ossrhPassword")
 
         // publish manually from the portal
-        publicationType = "USER_MANAGED"
+        publicationType = "AUTOMATIC"
     }
 }
 
