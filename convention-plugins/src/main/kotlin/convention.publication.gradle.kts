@@ -1,15 +1,15 @@
 //Publishing your Kotlin Multiplatform library to Maven Central
 //https://dev.to/kotlin/how-to-build-and-publish-a-kotlin-multiplatform-library-going-public-4a8k
 
-import org.gradle.api.publish.maven.MavenPublication
-import org.gradle.api.tasks.bundling.Jar
-import org.gradle.kotlin.dsl.`maven-publish`
-import org.gradle.kotlin.dsl.signing
-import java.util.*
+import java.util.Properties
 
 plugins {
     id("maven-publish")
     id("signing")
+}
+
+val javadocJar by tasks.registering(Jar::class) {
+    archiveClassifier.set("javadoc")
 }
 
 // Stub secrets to let the project sync and build without the publication values set up
@@ -35,29 +35,13 @@ if (secretPropsFile.exists()) {
     ext["ossrhPassword"] = System.getenv("OSSRH_PASSWORD")
 }
 
-val javadocJar by tasks.registering(Jar::class) {
-    archiveClassifier.set("javadoc")
-}
-
 fun getExtraString(name: String) = ext[name]?.toString()
 
 publishing {
-    // Configure maven central repository
-    repositories {
-        maven {
-            name = "sonatype"
-            setUrl("https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/")
-            credentials {
-                username = getExtraString("ossrhUsername")
-                password = getExtraString("ossrhPassword")
-            }
-        }
-    }
-
     // Configure all publications
     publications.withType<MavenPublication> {
         // Stub javadoc.jar artifact
-        artifact(javadocJar.get())
+//        artifact(javadocJar.get())
 
         // Provide artifacts information requited by Maven Central
         pom {

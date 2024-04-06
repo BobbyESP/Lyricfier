@@ -3,9 +3,22 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlinx.serialization)
     id("convention.publication")
+    id("com.gradleup.nmcp").version("0.0.7")
 }
 
-group = "com.bobbyesp.lyricfier"
+fun getExtraString(name: String) = ext[name]?.toString()
+
+nmcp {
+    publishAllPublications {
+        username = getExtraString("ossrhUsername")
+        password = getExtraString("ossrhPassword")
+
+        // publish manually from the portal
+        publicationType = "USER_MANAGED"
+    }
+}
+
+group = "io.github.bobbyesp.lyricfier"
 version = "1.0"
 
 kotlin {
@@ -117,7 +130,7 @@ kotlin {
 }
 
 android {
-    namespace = "com.bobbyesp.lyricfier"
+    namespace = "io.github.bobbyesp.lyricfier"
     compileSdk = 34
 
     defaultConfig {
