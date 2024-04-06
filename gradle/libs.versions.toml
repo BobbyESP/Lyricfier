@@ -35,7 +35,7 @@ kermit = { module = "co.touchlab:kermit", version.ref = "kermit" }
 multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 android-library = { id = "com.android.library", version.ref = "agp" }
 kotlinx-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
-jetbrains-dokka = { id = "org.jetbrains.dokka", version = "kotlin" }
+jetbrains-dokka = { id = "org.jetbrains.dokka", version.ref = "kotlin" }
 
 [bundles]
 ktor = ["ktor-core", "ktor-serialization", "ktor-logging", "ktor-contentnegotiation", "ktor-client-mock"]

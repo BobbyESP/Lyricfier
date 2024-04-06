@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.kotlinx.serialization)
     id("convention.publication")
     id("com.gradleup.nmcp").version("0.0.7")
+    id("org.jetbrains.dokka").version("1.9.20")
 }
 
 fun getExtraString(name: String) = ext[name]?.toString()
